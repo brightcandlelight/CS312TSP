@@ -401,7 +401,7 @@ namespace group {
         public string[] fancySolveProblem() {
             string[] results = new string[3];
 
-            defaultSolveProblem();
+            /*defaultSolveProblem();
             TSPSolution temp = bssf;
             double best = costOfBssf();
 
@@ -413,13 +413,23 @@ namespace group {
                 }
             }
 
-            bssf = temp;
+            bssf = temp;*/
 
-            // TODO: Add your implementation for your advanced solver here.
+            ////// My code //////
 
-            results[COST] = best.ToString();    // load results into array here, replacing these dummy values
-            results[TIME] = "-1";
-            results[COUNT] = "-1";
+            // Initialize variables
+            int bssfUpdates = 0;
+            string timeOut = "";
+            double bssfCost = double.MaxValue;
+            
+            // Then do branch and bound
+            Genetic a = new Genetic();
+            a.solve(ref Cities, time_limit, ref timeOut, ref bssfUpdates, ref bssf, ref bssfCost);
+
+            // Update text
+            results[COST] = bssfCost.ToString();    // load results into array here, replacing these dummy values
+            results[TIME] = timeOut;
+            results[COUNT] = bssfUpdates.ToString();
 
             return results;
         }

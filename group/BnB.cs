@@ -14,7 +14,7 @@ namespace group {
             nodes = new List<node>();
         }
 
-        class node {
+        public class node {
             public double[][] costs; // The cost array used to compute the minimum bound
             public int depth;
             public List<int> path;
@@ -57,7 +57,7 @@ namespace group {
         // Make the initial temp node and populate the costs by calling costToGetTo.
         // Space complexity = o(n^2) from passing in a node with a 2d array in it. n = # of cities
         // Time complexity = o(n^2).
-        void generateCosts(City[] Cities, out node temp) {
+        public void generateCosts(City[] Cities, out node temp) {
             temp = new node();
             temp.costs = new double[Cities.Length][];
             for (int i=0;i<Cities.Length;i++){
