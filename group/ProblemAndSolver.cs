@@ -389,11 +389,14 @@ namespace group {
         public string[] greedySolveProblem() {
             string[] results = new string[3];
 
-            // TODO: Add your implementation for a greedy solver here.
-
-            results[COST] = "not implemented";    // load results into array here, replacing these dummy values
-            results[TIME] = "-1";
-            results[COUNT] = "-1";
+            Greedy g = new Greedy();
+            ArrayList route;
+            string time;
+            g.solve(out route, Cities, out time);
+            bssf = new TSPSolution(route);
+            results[COST] = bssf.costOfRoute().ToString();    // load results into array here, replacing these dummy values
+            results[TIME] = time;
+            results[COUNT] = "0";
 
             return results;
         }
