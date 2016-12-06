@@ -54,6 +54,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gen.cs" />
     <Compile Include="Genetic.cs" />
     <Compile Include="Greedy.cs" />
     <Compile Include="PriorityQueue.cs" />

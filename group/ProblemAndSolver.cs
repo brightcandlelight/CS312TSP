@@ -421,18 +421,24 @@ namespace group {
             ////// My code //////
 
             // Initialize variables
-            int bssfUpdates = 0;
-            string timeOut = "";
-            double bssfCost = double.MaxValue;
-            
+            //int bssfUpdates = 0;
+            //string timeOut = "";
+            //double bssfCost = double.MaxValue;
+
             // Then do branch and bound
-            Genetic a = new Genetic();
-            a.solve(ref Cities, time_limit, ref timeOut, ref bssfUpdates, ref bssf, ref bssfCost);
+            //Genetic a = new Genetic();
+            //a.solve(ref Cities, time_limit, ref timeOut, ref bssfUpdates, ref bssf, ref bssfCost);
+
+            Gen g = new Gen();
+            ArrayList route;
+            string time;
+            g.solve(Cities, out route, out time, 50, 50, 0.1, 5);
+            bssf = new TSPSolution(route);
 
             // Update text
-            results[COST] = bssfCost.ToString();    // load results into array here, replacing these dummy values
-            results[TIME] = timeOut;
-            results[COUNT] = bssfUpdates.ToString();
+            results[COST] = bssf.costOfRoute() + "";    // load results into array here, replacing these dummy values
+            results[TIME] = time;
+            results[COUNT] = 100 + "";
 
             return results;
         }
