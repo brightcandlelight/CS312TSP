@@ -6,3 +6,11 @@ C:\Users\Jonathan\Downloads\CS312TSP-master\CS312TSP-master\group\bin\Debug\grou
 C:\Users\Jonathan\Downloads\CS312TSP-master\CS312TSP-master\group\obj\x86\Debug\group.Properties.Resources.resources
 C:\Users\Jonathan\Downloads\CS312TSP-master\CS312TSP-master\group\obj\x86\Debug\group.exe
 C:\Users\Jonathan\Downloads\CS312TSP-master\CS312TSP-master\group\obj\x86\Debug\group.pdb
+C:\Users\Jonathan\Documents\312\CS312TSP\group\obj\x86\Debug\group.exe
+C:\Users\Jonathan\Documents\312\CS312TSP\group\obj\x86\Debug\group.pdb
+C:\Users\Jonathan\Documents\312\CS312TSP\group\bin\Debug\group.exe
+C:\Users\Jonathan\Documents\312\CS312TSP\group\bin\Debug\group.pdb
+C:\Users\Jonathan\Documents\312\CS312TSP\group\obj\x86\Debug\group.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Documents\312\CS312TSP\group\obj\x86\Debug\group.Form1.resources
+C:\Users\Jonathan\Documents\312\CS312TSP\group\obj\x86\Debug\group.Properties.Resources.resources
+C:\Users\Jonathan\Documents\312\CS312TSP\group\obj\x86\Debug\group.csproj.GenerateResource.Cache

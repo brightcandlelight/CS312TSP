@@ -154,22 +154,15 @@ namespace group
            
             int start = rng.Next(0, parent1.Count);
             int end = rng.Next(0, parent1.Count);
-            for (int i = 0; i < offspring.Count; i++)
+            if (start > end)
             {
-                if (start < end )
-                {
-                    if (i > start && i < end)
-                    {
-                        offspring[i] = parent1[i];
-                    }
-                }
-                else if (start > end)
-                {
-                    if (!(i < start && i > end))
-                    {
-                        offspring[i] = parent1[i];
-                    }
-                }
+                int temp = start;
+                start = end;
+                end = temp;
+            }
+            for (int i = start; i <= end; i++)
+            {
+                offspring[i] = parent1[i];
             }
 
             for (int i = 0; i < parent2.Count; i++)
