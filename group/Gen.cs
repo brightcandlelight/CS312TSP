@@ -18,15 +18,51 @@ namespace group
 
         public Population(int populationSize, City[] cities = null)
         {
-            routes = new List<ArrayList>();
-            for (int i = 0; i < populationSize; i++)
+            if (cities != null)
             {
-                routes.Add(new ArrayList());
-
-                //this is to see if the constructor should spawn or not
-                if (cities != null)
+                Greedy g = new Greedy();
+                List<ArrayList> greedyRoutes = g.getRoutes(cities);
+                //shuffle routes
+                int n = greedyRoutes.Count;
+                while (n > 1)
                 {
-                    routes[i] = Spawn(cities);
+                    n--;
+                    int k = rng.Next(n + 1);
+                    ArrayList value = greedyRoutes[k];
+                    greedyRoutes[k] = greedyRoutes[n];
+                    greedyRoutes[n] = value;
+                }
+                if (populationSize > greedyRoutes.Count)
+                {
+                    routes = new List<ArrayList>();
+                    for (int i = 0; i < greedyRoutes.Count; i++)
+                    {
+                        routes.Add(new ArrayList());
+                        routes[i] = greedyRoutes[i];
+                    }
+                    for (int i = greedyRoutes.Count; i < populationSize; i++)
+                    {
+                        routes.Add(new ArrayList());
+                        routes[i] = Spawn(cities);
+                    }
+
+                } else { 
+                
+                    routes = greedyRoutes.GetRange(0, populationSize);
+                }
+            }
+            else
+            {
+                routes = new List<ArrayList>();
+                for (int i = 0; i < populationSize; i++)
+                {
+                    routes.Add(new ArrayList());
+
+                    //this is to see if the constructor should spawn or not
+                    if (cities != null)
+                    {
+                        routes[i] = Spawn(cities);
+                    }
                 }
             }
         }

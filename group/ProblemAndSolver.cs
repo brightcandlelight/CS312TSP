@@ -432,7 +432,7 @@ namespace group {
             Gen g = new Gen();
             ArrayList route;
             string time;
-            g.solve(Cities, out route, out time, 100, 200, 0.1, 5);
+            g.solve(Cities, out route, out time, 50, 100, 0.2, 5);
             bssf = new TSPSolution(route);
 
             // Update text
