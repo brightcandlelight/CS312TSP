@@ -245,7 +245,7 @@ namespace group
         double mutationRate;
         int parentPoolSize;
 
-        public void solve(City[] cities, out ArrayList route, out string time, int populationSize, int evolutionRounds, double mutationRate, int parentPoolSize)
+        public void solve(City[] cities, out ArrayList route, out string time, int populationSize, int evolutionRounds, double mutationRate, int parentPoolSize, int maxTime)
         {
             this.mutationRate = mutationRate;
             this.parentPoolSize = parentPoolSize;
@@ -255,6 +255,9 @@ namespace group
             Population p = new Population(populationSize, cities);
             for (int i = 1; i<= evolutionRounds; i++)
             {
+                if (timer.ElapsedMilliseconds > maxTime) {
+                    break;
+                }
                 p = Evolve(p);
             }
             route = p.SelectFittest();
