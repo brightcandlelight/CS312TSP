@@ -49,11 +49,13 @@ namespace group
             route = routes[bestStartNode];
         }
 
+        //O(n^3) + O(n) -> O(n^3) where n is number of cities
         public List<ArrayList> getRoutes(City[] cities)
         {
             bool[] visited;
             double[] solutions = new double[cities.Length];
             List<ArrayList> routes = new List<ArrayList>();
+            //O(n^3) where n is number of cities
             for (int i = 0; i < cities.Length; i++)
             {
                 routes.Add(new ArrayList());
@@ -63,6 +65,7 @@ namespace group
                 double totalDist = 0;
                 routes[i] = new ArrayList();
                 routes[i].Add(cities[currentCity]);
+                //O(n^2) where n is number of cities
                 while (routes[i].Count < cities.Length)
                 {
                     double closestDist;
@@ -75,6 +78,7 @@ namespace group
             }
             double shortestRoute = double.MaxValue;
             int bestStartNode = 0;
+            //O(n) where n = cities
             for (int i = 0; i < cities.Length; i++)
             {
                 if (solutions[i] < shortestRoute)
@@ -86,6 +90,7 @@ namespace group
             return routes;
         }
 
+        //O(n) where n is number of cities
         private int ClosestUnvisitedCity(out double closestDist, City[] cities, bool[] visited, int currentCity)
         {
             closestDist = double.MaxValue;
