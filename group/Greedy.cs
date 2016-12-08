@@ -9,6 +9,8 @@ namespace group
 {
     class Greedy
     {
+        //Time: O(n^3) + O(n) -> O(n^3) where n is number of cities
+        //Space: O(n^2) + 2O(n) -> O(n^2)
         internal void solve(out ArrayList route, City[] cities, out string time)
         {
             Stopwatch timer = new Stopwatch();
@@ -16,6 +18,7 @@ namespace group
             bool[] visited;
             double[] solutions = new double[cities.Length];
             ArrayList[] routes = new ArrayList[cities.Length];
+            //O(n^3) where n is number of cities
             for (int i = 0; i < cities.Length; i++)
             {
                 visited = new bool[cities.Length];
@@ -24,6 +27,7 @@ namespace group
                 double totalDist = 0;
                 routes[i] = new ArrayList();
                 routes[i].Add(cities[currentCity]);
+                //O(n^2) where n is number of cities
                 while (routes[i].Count < cities.Length)
                 {
                     double closestDist;
@@ -49,7 +53,8 @@ namespace group
             route = routes[bestStartNode];
         }
 
-        //O(n^3) + O(n) -> O(n^3) where n is number of cities
+        //Time: O(n^3) + O(n) -> O(n^3) where n is number of cities
+        //Space: O(n^2) + 2O(n) -> O(n^2)
         public List<ArrayList> getRoutes(City[] cities)
         {
             bool[] visited;
