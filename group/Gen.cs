@@ -16,11 +16,13 @@ namespace group
             return routes.Count;
         }
 
+        // Time o(n^3)
         public Population(int populationSize, City[] cities = null)
         {
             if (cities != null)
             {
                 Greedy g = new Greedy();
+                // o(n^3)
                 List<ArrayList> greedyRoutes = g.getRoutes(cities);
                 //shuffle routes
                 int n = greedyRoutes.Count;
@@ -66,7 +68,9 @@ namespace group
                 }
             }
         }
+        
         private static Random rng = new Random();
+        // Time = o(n)
         private ArrayList Spawn(City[] cities)
         {
             ArrayList route = new ArrayList();
@@ -98,6 +102,7 @@ namespace group
         }
 
         //Fitness function - gets fittest individual - aka Route that costs least
+        //Time = o(m). m=population size
         public ArrayList SelectFittest()
         {
             ArrayList fittest = routes[0];
@@ -142,6 +147,7 @@ namespace group
     {
         private static Random rng = new Random();
         
+        //o(m(m+parentPoolSize+n^2))
         public Population Evolve(Population p)
         {
             Population evolved = new Population(p.PopulationSize());
@@ -150,13 +156,16 @@ namespace group
 
             for (int i = 1; i < evolved.PopulationSize(); i++)
             {
+                //o(parentPoolSize)
                 Tuple<ArrayList, ArrayList> t = SelectParents(p);
+                //o(n^2)
                 ArrayList offspring = Crossover(t.Item1, t.Item2);
                 evolved.setRoute(i, offspring);
             }
 
             for (int i = 1; i < evolved.PopulationSize(); i++)
             {
+                //o(populationSize)
                 Mutate(evolved.getRoute(i));
             }
 
@@ -164,6 +173,7 @@ namespace group
         }
 
         //Swapping mutation
+        //o(m). m = population size
         private void Mutate(ArrayList route)
         {
             for (int a = 0; a < route.Count; a++)
@@ -180,6 +190,7 @@ namespace group
             }
         }
 
+        // Time = o(n^2)
         private ArrayList Crossover(ArrayList parent1, ArrayList parent2)
         {
             ArrayList offspring = new ArrayList();
@@ -219,6 +230,7 @@ namespace group
             return offspring;
         }
 
+        // Time = o(parentPoolSize)
         private Tuple<ArrayList, ArrayList> SelectParents(Population p)
         {
             Population parentPool = new Population(parentPoolSize);
@@ -245,6 +257,8 @@ namespace group
         double mutationRate;
         int parentPoolSize;
 
+        //o(evolutionRounds(m(m+parentPoolSize+n^2)))
+        // so, assuming everything else is constant, then o(n^2)
         public void solve(City[] cities, out ArrayList route, out string time, int populationSize, int evolutionRounds, double mutationRate, int parentPoolSize, int maxTime)
         {
             this.mutationRate = mutationRate;
